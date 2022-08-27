@@ -4,6 +4,7 @@ const rules = {
 
 export function sessionMiddleware(path, session) {
   let pathKey = undefined
+
   if(session.previousPath !== undefined){
     pathKey = session.previousPath+'.'+path
     let action = rules[pathKey]
@@ -12,6 +13,7 @@ export function sessionMiddleware(path, session) {
     }
   }
   session.previousPath = path
+  console.log(pathKey)
 
   return pathKey ?? path;
 }

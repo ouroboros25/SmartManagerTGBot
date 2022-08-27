@@ -18,8 +18,8 @@ bot.use((new LocalSession({ database: 'example_db.json' })).middleware())
 //Middleware
 bot.use(async (ctx, next) => {
   let response = sessionMiddleware(ctx.update.message.text, ctx.session);
-  console.log(response);
-  routerMiddleware(ctx.update.message.text, ctx.session);
+//console.log(response);
+  routerMiddleware(response, ctx);
 
   await next() // runs next middleware
 })
